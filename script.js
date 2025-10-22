@@ -5,12 +5,12 @@ const lowOrHi = document.querySelector('.lowOrHi');
 const lastResult = document.querySelector('.lastResult');
 const prevGuessElement=document.querySelector('.guesses');
 
-let randomNumber = Math.floor(Math.random() * 100) + 1;
+let randomNumber = Math.floor(Math.random() * 100) + 1; // use Math.floor to round down the decimal but we can use parseInt also
 let guessesRemaining = 10;
 
-const userGuessesArray=[];
+// const userGuessesArray=[]; // user array is not used in the code but i have kept it if needed later
 
-guessSubmit.addEventListener('click', function(event) {
+guessSubmit.addEventListener('click', function(event) { // submit event is not working here so used click event
   event.preventDefault();
   const userGuess = Number(guessField.value);
   guessField.value = '';
@@ -22,7 +22,7 @@ guessSubmit.addEventListener('click', function(event) {
     lowOrHi.innerHTML="Sorry, You have already lost please start a new game to replay!!!\n              (click button below)"; // instead of giving whitespaces like that i could have appended childs of specific classes and apply css in file on them
     return;
   }
-  userGuessesArray.push(userGuess);
+//   userGuessesArray.push(userGuess);
   guessesRemaining--;
   lastResult.textContent = guessesRemaining;
   prevGuessElement.appendChild(document.createTextNode(userGuess + ' '));
@@ -39,7 +39,7 @@ guessSubmit.addEventListener('click', function(event) {
 resetButton.addEventListener('click', function() {
   randomNumber = Math.floor(Math.random() * 100) + 1;
   guessesRemaining = 10;
-  userGuessesArray.length = 0; // clear previous guesses
+//   userGuessesArray.length = 0; // clear previous guesses
   lastResult.textContent = guessesRemaining;
   prevGuessElement.textContent = ''; // clear guesses display
   lowOrHi.textContent = '';
