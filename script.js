@@ -10,7 +10,7 @@ let guessesRemaining = 10;
 
 const userGuessesArray=[];
 
-guessSubmit.addEventListener('submit', function(event) {
+guessSubmit.addEventListener('click', function(event) {
   event.preventDefault();
   const userGuess = Number(guessField.value);
   guessField.value = '';
@@ -39,5 +39,10 @@ guessSubmit.addEventListener('submit', function(event) {
 resetButton.addEventListener('click', function() {
   randomNumber = Math.floor(Math.random() * 100) + 1;
   guessesRemaining = 10;
+  userGuessesArray.length = 0; // clear previous guesses
+  lastResult.textContent = guessesRemaining;
+  prevGuessElement.textContent = ''; // clear guesses display
+  lowOrHi.textContent = '';
+  guessField.value = '';
   return;
 });
